@@ -1,8 +1,37 @@
-function ItemCard({ item, onResolve, onDelete }) {
+import { useState } from 'react';
+
+function LostCard({ item, onResolve, onDelete }) {
     const isResolved = item.status === 'resolved';
+    const [resolving, setResolving] = useState(false);
+    const [deleting, setDeleting] = useState(false);
+
+    const handleResolve = async () => {
+        setResolving(true);
+        try {
+            await onResolve(item._id);
+        } finally {
+            setResolving(false);
+        }
+    };
+
+    const handleDelete = async () => {
+        if (!window.confirm(`Delete "${item.title}"? This cannot be undone.`)) return;
+        setDeleting(true);
+        try {
+            await onDelete(item._id);
+        } finally {
+            setDeleting(false);
+        }
+    };
 
     return (
         <div className={`item-card ${item.type} ${isResolved ? 'resolved' : ''}`}>
+            {item.imageUrl && (
+                <div className="card-image">
+                    <img src={item.imageUrl} alt={item.title} loading="lazy" />
+                </div>
+            )}
+
             <div className="card-header">
                 <span className={`type-badge ${item.type}`}>
                     {item.type === 'lost' ? '🔍 Lost' : '✅ Found'}
@@ -40,19 +69,23 @@ function ItemCard({ item, onResolve, onDelete }) {
                     })}
                 </span>
                 <div className="card-actions">
-                    {!isResolved && (
+                    {!isResolved ? (
                         <button
                             className="action-btn resolve-btn"
-                            onClick={() => onResolve(item._id)}
+                            onClick={handleResolve}
+                            disabled={resolving}
                         >
-                            ✓ Resolve
+                            {resolving ? '...' : '✓ Resolve'}
                         </button>
+                    ) : (
+                        <span className="resolved-tag">Resolved</span>
                     )}
                     <button
                         className="action-btn delete-btn"
-                        onClick={() => onDelete(item._id)}
+                        onClick={handleDelete}
+                        disabled={deleting}
                     >
-                        🗑 Delete
+                        {deleting ? '...' : '🗑 Delete'}
                     </button>
                 </div>
             </div>
@@ -60,4 +93,4 @@ function ItemCard({ item, onResolve, onDelete }) {
     );
 }
 
-export default ItemCard;
+export default LostCard;

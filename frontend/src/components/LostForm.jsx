@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-function ItemForm({ onItemCreated }) {
+function LostForm({ onSubmit, onCancel }) {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         type: 'lost',
         location: '',
         contactInfo: '',
+        imageUrl: '',
     });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -26,16 +27,25 @@ function ItemForm({ onItemCreated }) {
 
         setLoading(true);
         try {
-            await onItemCreated(formData);
+            // Strip empty optional fields before sending
+            const payload = { ...formData };
+            Object.keys(payload).forEach((key) => {
+                if (typeof payload[key] === 'string' && !payload[key].trim()) {
+                    delete payload[key];
+                }
+            });
+
+            await onSubmit(payload);
             setFormData({
                 title: '',
                 description: '',
                 type: 'lost',
                 location: '',
                 contactInfo: '',
+                imageUrl: '',
             });
         } catch (err) {
-            setError(err.response?.data?.message || 'Something went wrong');
+            setError(err.response?.data?.message || 'Something went wrong. Please try again.');
         } finally {
             setLoading(false);
         }
@@ -44,7 +54,12 @@ function ItemForm({ onItemCreated }) {
     return (
         <div className="item-form-wrapper">
             <form className="item-form" onSubmit={handleSubmit}>
-                <h2>📝 Report an Item</h2>
+                <div className="form-header-row">
+                    <h2>📝 Report an Item</h2>
+                    <button type="button" className="form-close-btn" onClick={onCancel} aria-label="Close form">
+                        ✕
+                    </button>
+                </div>
 
                 {error && <div className="form-error">{error}</div>}
 
@@ -110,6 +125,18 @@ function ItemForm({ onItemCreated }) {
                             onChange={handleChange}
                         />
                     </div>
+
+                    <div className="form-group full-width">
+                        <label htmlFor="imageUrl">Image URL (optional)</label>
+                        <input
+                            id="imageUrl"
+                            name="imageUrl"
+                            type="url"
+                            placeholder="https://example.com/image.jpg"
+                            value={formData.imageUrl}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </div>
 
                 <button type="submit" className="submit-btn" disabled={loading}>
@@ -120,4 +147,4 @@ function ItemForm({ onItemCreated }) {
     );
 }
 
-export default ItemForm;
+export default LostForm;

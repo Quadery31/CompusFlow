@@ -334,6 +334,7 @@ body {
     opacity: 0;
     transform: translateY(-12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -447,6 +448,150 @@ body {
   cursor: not-allowed;
 }
 
+/* ============ FORM CLOSE BUTTON ============ */
+
+.form-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-header-row h2 {
+  margin-bottom: 0;
+}
+
+.form-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.form-close-btn:hover {
+  background: var(--accent-red-bg);
+  color: var(--accent-red);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* ============ CARD IMAGE ============ */
+
+.card-image {
+  margin: -24px -24px 0 -24px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  overflow: hidden;
+  max-height: 180px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover .card-image img {
+  transform: scale(1.03);
+}
+
+/* ============ RESOLVED TAG ============ */
+
+.resolved-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 40px;
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--status-resolved);
+  letter-spacing: 0.3px;
+}
+
+/* ============ TOAST ============ */
+
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 9999;
+  animation: toastSlide 0.35s ease;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px);
+}
+
+.toast-success {
+  background: rgba(16, 185, 129, 0.92);
+  color: #fff;
+}
+
+.toast-info {
+  background: rgba(59, 130, 246, 0.92);
+  color: #fff;
+}
+
+.toast-error {
+  background: rgba(239, 68, 68, 0.92);
+  color: #fff;
+}
+
+@keyframes toastSlide {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============ ERROR BANNER ============ */
+
+.error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  background: var(--accent-red-bg);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-md);
+  color: var(--accent-red);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.retry-btn {
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--accent-red);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.retry-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
 /* ============ EMPTY & LOADING STATES ============ */
 
 .loading-state,
@@ -462,6 +607,12 @@ body {
 
 .empty-icon {
   font-size: 3rem;
+}
+
+.empty-state .add-btn {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  padding: 10px 20px;
 }
 
 .spinner {
@@ -505,5 +656,18 @@ body {
   .add-btn {
     width: 100%;
     text-align: center;
+  }
+
+  .toast {
+    left: 16px;
+    right: 16px;
+  }
+
+  .card-image {
+    max-height: 140px;
+  }
+
+  .card-image img {
+    height: 140px;
   }
 }

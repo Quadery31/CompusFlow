@@ -1,10 +1,10 @@
 import './App.css';
-import LostFoundPage from './components/LostFoundPage';
+import LostFound from './pages/LostFound';
 
 function App() {
   return (
     <div className="app">
-      <LostFoundPage />
+      <LostFound />
     </div>
   );
 }
