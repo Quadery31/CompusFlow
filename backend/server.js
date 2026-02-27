@@ -5,6 +5,7 @@ import connectDB from './config/db.js';
 import lostFoundRoutes from './routes/lostFoundRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
 import doubtRoutes from './routes/doubtRoutes.js';
+import complaintRoutes from './routes/complaintRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -32,6 +33,7 @@ app.get('/api/test', (req, res) => {
 app.use('/api/lost', lostFoundRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/doubts', doubtRoutes);
+app.use('/api/complaints', complaintRoutes);
 
 const PORT = process.env.PORT || 5000;
 

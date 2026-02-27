@@ -1143,7 +1143,188 @@ body {
   padding: 10px 24px;
 }
 
+/* ============ COMPLAINT CARD ============ */
+
+.complaint-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.complaint-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+}
+
+.complaint-card.complaint-resolved::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.complaint-card.complaint-resolved {
+  opacity: 0.7;
+}
+
+.complaint-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.complaint-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 40px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+}
+
+/* ============ COMPLAINT STATUS BADGES ============ */
+
+.complaint-status-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 40px;
+  letter-spacing: 0.3px;
+}
+
+.complaint-status-badge.status-open {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.complaint-status-badge.status-discussion {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.complaint-status-badge.status-escalated {
+  background: rgba(139, 92, 246, 0.1);
+  color: #a78bfa;
+}
+
+.complaint-status-badge.status-resolved {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.complaint-card-stats {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.complaint-stat {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.complaint-author {
+  font-style: italic;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* ============ COMPLAINT DETAIL ACTIONS ============ */
+
+.complaint-detail-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.complaint-upvote {
+  padding: 8px 20px;
+  font-size: 0.88rem;
+}
+
+.status-dropdown-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dropdown-wrapper label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.status-dropdown {
+  padding: 8px 14px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.status-dropdown:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-blue-bg);
+}
+
+.status-dropdown option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* ============ ANONYMOUS TOGGLE ============ */
+
+.anonymous-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.anonymous-toggle input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-blue);
+  cursor: pointer;
+}
+
+.complaint-author-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* ============ RESPONSIVE ============ */
+
 
 
 @media (max-width: 640px) {
