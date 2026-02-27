@@ -794,7 +794,357 @@ body {
   gap: 8px;
 }
 
+/* ============ DOUBT CARD ============ */
+
+.doubt-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.doubt-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+}
+
+.doubt-card.doubt-solved::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.doubt-card.doubt-solved {
+  opacity: 0.7;
+}
+
+.doubt-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.doubt-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subject-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 40px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+}
+
+.status-badge.open {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--status-open);
+}
+
+.status-badge.solved {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--status-resolved);
+}
+
+.doubt-card-stats {
+  display: flex;
+  gap: 14px;
+}
+
+.doubt-stat {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* ============ DOUBT FILTER BAR ============ */
+
+.doubt-filter-bar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filter-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select {
+  padding: 10px 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  min-width: 160px;
+}
+
+.filter-group select:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-blue-bg);
+}
+
+.filter-group select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* ============ BACK BUTTON ============ */
+
+.back-btn {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+  font-family: inherit;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text-primary);
+  border-color: var(--border-glow);
+}
+
+/* ============ DOUBT DETAIL CARD ============ */
+
+.doubt-detail-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.doubt-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.doubt-detail-badges {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.doubt-detail-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  line-height: 1.4;
+}
+
+.doubt-detail-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+.doubt-detail-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.solve-btn {
+  align-self: flex-start;
+  padding: 10px 22px;
+  background: var(--accent-found-bg);
+  color: var(--accent-found);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.solve-btn:hover {
+  background: rgba(16, 185, 129, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ============ ANSWERS SECTION ============ */
+
+.answers-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.answers-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.empty-answers {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.answers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ============ ANSWER CARD ============ */
+
+.answer-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+}
+
+.answer-card:hover {
+  border-color: var(--border-glow);
+}
+
+.answer-text {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.answer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upvote-btn {
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.upvote-btn:hover:not(:disabled) {
+  background: var(--accent-blue-bg);
+  color: var(--accent-blue);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+.upvote-btn.upvoting {
+  background: var(--accent-found-bg);
+  color: var(--accent-found);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.upvote-btn:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+/* ============ ANSWER FORM ============ */
+
+.answer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.answer-form textarea {
+  padding: 14px 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.answer-form textarea:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-blue-bg);
+}
+
+.answer-form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.answer-submit-btn {
+  align-self: flex-end;
+  width: auto;
+  padding: 10px 24px;
+}
+
 /* ============ RESPONSIVE ============ */
+
 
 @media (max-width: 640px) {
   .app {

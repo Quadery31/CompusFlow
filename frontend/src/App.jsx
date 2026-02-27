@@ -2,6 +2,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import LostFound from './pages/LostFound';
 import Events from './pages/Events';
+import Doubts from './pages/Doubts';
+import DoubtDetails from './pages/DoubtDetails';
 
 function App() {
   return (
@@ -15,12 +17,17 @@ function App() {
           <NavLink to="/events" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
             🗓️ Events
           </NavLink>
+          <NavLink to="/doubts" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            ❓ Doubts
+          </NavLink>
         </nav>
 
         {/* Routes */}
         <Routes>
           <Route path="/" element={<LostFound />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/doubts" element={<Doubts />} />
+          <Route path="/doubts/:id" element={<DoubtDetails />} />
         </Routes>
       </div>
     </Router>
