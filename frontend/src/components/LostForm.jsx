@@ -25,6 +25,11 @@ function LostForm({ onSubmit, onCancel }) {
             return;
         }
 
+        if (!formData.contactInfo.trim()) {
+            setError('Contact info is required');
+            return;
+        }
+
         setLoading(true);
         try {
             // Strip empty optional fields before sending
@@ -78,16 +83,8 @@ function LostForm({ onSubmit, onCancel }) {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="type">Type *</label>
-                        <select
-                            id="type"
-                            name="type"
-                            value={formData.type}
-                            onChange={handleChange}
-                        >
-                            <option value="lost">Lost</option>
-                            <option value="found">Found</option>
-                        </select>
+                        <label htmlFor="type">Type</label>
+                        <div className="static-field">🔍 Lost</div>
                     </div>
 
                     <div className="form-group full-width">
@@ -115,7 +112,7 @@ function LostForm({ onSubmit, onCancel }) {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="contactInfo">Contact Info</label>
+                        <label htmlFor="contactInfo">Contact Info *</label>
                         <input
                             id="contactInfo"
                             name="contactInfo"
@@ -123,6 +120,7 @@ function LostForm({ onSubmit, onCancel }) {
                             placeholder="e.g. email or phone"
                             value={formData.contactInfo}
                             onChange={handleChange}
+                            required
                         />
                     </div>
 

@@ -7,8 +7,8 @@ export const createItem = async (req, res) => {
     try {
         const { title, description, imageUrl, type, location, contactInfo, status } = req.body;
 
-        if (!title || !type) {
-            return res.status(400).json({ success: false, message: 'Title and type are required' });
+        if (!title || !type || !contactInfo) {
+            return res.status(400).json({ success: false, message: 'Title, type, and contact info are required' });
         }
 
         if (!['lost', 'found'].includes(type)) {

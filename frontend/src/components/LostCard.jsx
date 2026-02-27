@@ -1,16 +1,16 @@
 import { useState } from 'react';
 
-function LostCard({ item, onResolve, onDelete }) {
-    const isResolved = item.status === 'resolved';
-    const [resolving, setResolving] = useState(false);
+function LostCard({ item, onFound, onDelete }) {
+    const isFound = item.type === 'found';
+    const [marking, setMarking] = useState(false);
     const [deleting, setDeleting] = useState(false);
 
-    const handleResolve = async () => {
-        setResolving(true);
+    const handleFound = async () => {
+        setMarking(true);
         try {
-            await onResolve(item._id);
+            await onFound(item._id);
         } finally {
-            setResolving(false);
+            setMarking(false);
         }
     };
 
@@ -25,7 +25,7 @@ function LostCard({ item, onResolve, onDelete }) {
     };
 
     return (
-        <div className={`item-card ${item.type} ${isResolved ? 'resolved' : ''}`}>
+        <div className={`item-card ${item.type} ${isFound ? 'resolved' : ''}`}>
             {item.imageUrl && (
                 <div className="card-image">
                     <img src={item.imageUrl} alt={item.title} loading="lazy" />
@@ -36,8 +36,8 @@ function LostCard({ item, onResolve, onDelete }) {
                 <span className={`type-badge ${item.type}`}>
                     {item.type === 'lost' ? '🔍 Lost' : '✅ Found'}
                 </span>
-                <span className={`status-badge ${item.status}`}>
-                    {isResolved ? '🟢 Resolved' : '🟡 Open'}
+                <span className={`status-badge ${isFound ? 'resolved' : 'open'}`}>
+                    {isFound ? '🟢 Found' : '🟡 Open'}
                 </span>
             </div>
 
@@ -69,16 +69,16 @@ function LostCard({ item, onResolve, onDelete }) {
                     })}
                 </span>
                 <div className="card-actions">
-                    {!isResolved ? (
+                    {!isFound ? (
                         <button
                             className="action-btn resolve-btn"
-                            onClick={handleResolve}
-                            disabled={resolving}
+                            onClick={handleFound}
+                            disabled={marking}
                         >
-                            {resolving ? '...' : '✓ Resolve'}
+                            {marking ? '...' : '✅ Found'}
                         </button>
                     ) : (
-                        <span className="resolved-tag">Resolved</span>
+                        <span className="resolved-tag">Found</span>
                     )}
                     <button
                         className="action-btn delete-btn"

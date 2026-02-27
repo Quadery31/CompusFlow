@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { getItems, createItem, resolveItem, deleteItem } from '../services/lostFoundService';
+import { getItems, createItem, markAsFound, deleteItem } from '../services/lostFoundService';
 import FilterBar from '../components/FilterBar';
 import LostForm from '../components/LostForm';
 import LostCard from '../components/LostCard';
@@ -44,13 +44,13 @@ function LostFound() {
         showToast('Item reported successfully!');
     };
 
-    const handleResolve = async (id) => {
-        const updatedItem = await resolveItem(id);
+    const handleFound = async (id) => {
+        const updatedItem = await markAsFound(id);
         // Optimistic: update in-place
         setItems((prev) =>
             prev.map((item) => (item._id === id ? updatedItem : item))
         );
-        showToast('Item marked as resolved.');
+        showToast('Item marked as found! 🎉');
     };
 
     const handleDelete = async (id) => {
@@ -124,7 +124,7 @@ function LostFound() {
                         <LostCard
                             key={item._id}
                             item={item}
-                            onResolve={handleResolve}
+                            onFound={handleFound}
                             onDelete={handleDelete}
                         />
                     ))}

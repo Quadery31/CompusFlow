@@ -20,11 +20,11 @@ export const createItem = async (itemData) => {
 };
 
 /**
- * Mark an item as resolved.
+ * Mark an item as found (moves it to the "found" section).
  * @param {string} id
  */
-export const resolveItem = async (id) => {
-    const { data } = await API.put(`/lost/${id}`, { status: 'resolved' });
+export const markAsFound = async (id) => {
+    const { data } = await API.put(`/lost/${id}`, { type: 'found', status: 'resolved' });
     return data.data;
 };
 

@@ -20,7 +20,8 @@ const lostFoundSchema = new mongoose.Schema({
         type: String
     },
     contactInfo: {
-        type: String
+        type: String,
+        required: [true, 'Please provide contact information']
     },
     status: {
         type: String,
