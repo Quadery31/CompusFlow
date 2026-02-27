@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import lostFoundRoutes from './routes/lostFoundRoutes.js';
+import eventRoutes from './routes/eventRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -28,6 +29,7 @@ app.get('/api/test', (req, res) => {
 
 // Mount Routes
 app.use('/api/lost', lostFoundRoutes);
+app.use('/api/events', eventRoutes);
 
 const PORT = process.env.PORT || 5000;
 

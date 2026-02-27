@@ -641,11 +641,173 @@ body {
   }
 }
 
+/* ============ NAVIGATION ============ */
+
+.main-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  padding: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+}
+
+.nav-link {
+  flex: 1;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass);
+}
+
+.nav-link.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-blue) 0%, #2563eb 100%);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+}
+
+/* ============ EVENT CARD ============ */
+
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.event-card.countdown-upcoming::before,
+.event-card.countdown-today::before {
+  background: linear-gradient(90deg, var(--accent-blue), #6366f1);
+}
+
+.event-card.countdown-past::before {
+  background: linear-gradient(90deg, var(--text-muted), #4b5563);
+}
+
+.event-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.event-card.countdown-past {
+  opacity: 0.65;
+}
+
+.event-countdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ============ COUNTDOWN BADGES ============ */
+
+.countdown-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 40px;
+  letter-spacing: 0.3px;
+}
+
+.countdown-badge.countdown-today {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-found);
+}
+
+.countdown-badge.countdown-upcoming {
+  background: var(--accent-blue-bg);
+  color: var(--accent-blue);
+}
+
+.countdown-badge.countdown-past {
+  background: rgba(107, 114, 128, 0.15);
+  color: var(--text-muted);
+}
+
+/* ============ CATEGORY BADGE ============ */
+
+.category-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 40px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #a78bfa;
+  text-transform: capitalize;
+  letter-spacing: 0.3px;
+}
+
+/* ============ EVENT META ============ */
+
+.event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ============ REGISTER BUTTON ============ */
+
+.register-btn {
+  background: var(--accent-blue-bg);
+  color: var(--accent-blue);
+  border-color: rgba(59, 130, 246, 0.2);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.register-btn:hover {
+  background: rgba(59, 130, 246, 0.25);
+}
+
+.event-actions-left {
+  display: flex;
+  gap: 8px;
+}
+
 /* ============ RESPONSIVE ============ */
 
 @media (max-width: 640px) {
   .app {
     padding: 20px 16px;
+  }
+
+  .main-nav {
+    margin-bottom: 20px;
+  }
+
+  .nav-link {
+    padding: 10px 12px;
+    font-size: 0.85rem;
   }
 
   .page-header {
