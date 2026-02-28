@@ -2,7 +2,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import './Login.css'; 
+import './Login.css';
 
 export default function Login() {
   const { login } = useAuth();
@@ -25,16 +25,19 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-page-wrapper">
       <div className="login-card">
         <h1>CampusFlow</h1>
         <p>Sign in with your Google account</p>
-        <GoogleLogin 
-          onSuccess={handleSuccess} 
-          onError={() => alert('Google Login Failed')} 
-          theme="outline"
-          size="large"
-        />
+        <div className="login-btn-container">
+          <GoogleLogin
+            onSuccess={handleSuccess}
+            onError={() => alert('Google Login Failed')}
+            theme="outline"
+            size="large"
+            width="320"
+          />
+        </div>
       </div>
     </div>
   );

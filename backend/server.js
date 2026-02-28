@@ -7,11 +7,8 @@ import lostFoundRoutes from './routes/lostFoundRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
 import doubtRoutes from './routes/doubtRoutes.js';
 import complaintRoutes from './routes/complaintRoutes.js';
-<<<<<<< Updated upstream
 import noteRoutes from './routes/noteRoutes.js';
-=======
 import authRoutes from './routes/authRoutes.js';
->>>>>>> Stashed changes
 
 // Load environment variables
 dotenv.config();

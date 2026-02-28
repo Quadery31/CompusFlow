@@ -1,30 +1,69 @@
-.login-container {
+.login-page-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  /* Updated to match your dark theme */
-  background-color: #0f1117; 
+  /* Very subtle, dark radial gradient to draw the eye to the center card */
+  background: radial-gradient(circle at center, #1a1d27 0%, #0f1117 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .login-card {
-  background: white; /* Keeps the card white for high contrast */
-  padding: 3rem;
-  border-radius: 20px; /* Slightly more rounded for a modern look */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3); /* Softer shadow */
+  background: white;
+  padding: 4rem 3rem;
+  /* Adjusted padding: Ensure space above CampusFlow equals space below button (approx) */
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  /* Deeper shadow to lift off dark background */
   text-align: center;
   width: 90%;
-  max-width: 400px; /* Ensures it doesn't get too wide on large screens */
+  max-width: 440px;
+  /* Slightly wider for the new button styling */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-card h1 {
   margin-bottom: 0.5rem;
   color: #1a1a1a;
-  font-weight: 700;
+  font-weight: 800;
+  /* Bolder */
+  letter-spacing: -1px;
+  /* Tighter */
+  font-size: 2.5rem;
+  font-family: 'Inter', sans-serif;
+  /* Clean, modern sans-serif font */
 }
 
 .login-card p {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   color: #666;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+}
+
+/* Base styling for the container wrapping the GoogleLogin component to enable our flexbox styles */
+.login-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.login-btn-container:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+  /* Subtle dark hover effect */
+}
+
+/* Ensure the Google Button stretches wider if possible */
+.login-btn-container>div,
+.login-btn-container iframe {
+  width: 100% !important;
+  max-width: 320px;
 }
