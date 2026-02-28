@@ -1,4 +1,4 @@
-function CommentCard({ comment }) {
+function CommentCard({ comment, onDelete }) {
     const formattedDate = new Date(comment.createdAt).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
@@ -10,6 +10,15 @@ function CommentCard({ comment }) {
             <p className="answer-text">{comment.text}</p>
             <div className="answer-footer">
                 <span className="card-date">{formattedDate}</span>
+                {onDelete && (
+                    <button
+                        className="comment-delete-btn"
+                        onClick={onDelete}
+                        title="Delete comment"
+                    >
+                        🗑
+                    </button>
+                )}
             </div>
         </div>
     );

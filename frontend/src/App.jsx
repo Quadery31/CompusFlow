@@ -6,6 +6,8 @@ import Doubts from './pages/Doubts';
 import DoubtDetails from './pages/DoubtDetails';
 import Complaints from './pages/Complaints';
 import ComplaintDetails from './pages/ComplaintDetails';
+import Notes from './pages/Notes';
+import NoteDetails from './pages/NoteDetails';
 
 function App() {
   return (
@@ -25,6 +27,9 @@ function App() {
           <NavLink to="/complaints" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
             📢 Complaints
           </NavLink>
+          <NavLink to="/notes" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            📚 Notes
+          </NavLink>
         </nav>
 
         {/* Routes */}
@@ -35,6 +40,8 @@ function App() {
           <Route path="/doubts/:id" element={<DoubtDetails />} />
           <Route path="/complaints" element={<Complaints />} />
           <Route path="/complaints/:id" element={<ComplaintDetails />} />
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/notes/:id" element={<NoteDetails />} />
         </Routes>
       </div>
     </Router>

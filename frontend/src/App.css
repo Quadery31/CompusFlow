@@ -1323,6 +1323,278 @@ body {
   font-style: italic;
 }
 
+/* ============ NOTES MODULE ============ */
+
+.note-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.note-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+}
+
+.note-card:hover {
+  border-color: var(--border-glow);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.note-card-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.note-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 40px;
+  letter-spacing: 0.3px;
+}
+
+.note-subject-badge {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+}
+
+.note-semester-badge {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+.note-stats {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.note-stat {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* --- Note Detail Page --- */
+
+.note-detail-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  backdrop-filter: blur(12px);
+}
+
+.note-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.note-detail-badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.note-author-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.note-detail-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.note-download-btn {
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+  border-color: rgba(99, 102, 241, 0.2);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.note-download-btn:hover {
+  background: rgba(99, 102, 241, 0.25);
+}
+
+/* --- PDF Viewer --- */
+
+.pdf-viewer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pdf-viewer-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 600px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-secondary);
+}
+
+.pdf-fallback {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.pdf-fallback a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+.pdf-fallback a:hover {
+  text-decoration: underline;
+}
+
+/* --- File Input --- */
+
+.file-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.file-input-wrapper input[type="file"] {
+  padding: 12px 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-input-wrapper input[type="file"]:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px var(--accent-blue-bg);
+}
+
+.file-input-wrapper input[type="file"]::file-selector-button {
+  background: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: all 0.2s ease;
+}
+
+.file-input-wrapper input[type="file"]::file-selector-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(99, 102, 241, 0.35);
+}
+
+.file-name-display {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* --- Button spinner --- */
+
+.btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* --- Back button --- */
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+}
+
+.back-btn:hover {
+  color: var(--text-primary);
+}
+
+/* --- Comment delete button --- */
+
+.comment-delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  opacity: 0.6;
+}
+
+.comment-delete-btn:hover {
+  opacity: 1;
+  color: var(--accent-red);
+  background: var(--accent-red-bg);
+}
+
+/* --- Comments header row --- */
+
+.comments-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
 /* ============ RESPONSIVE ============ */
 
 
@@ -1373,5 +1645,25 @@ body {
 
   .card-image img {
     height: 140px;
+  }
+
+  .pdf-viewer {
+    height: 400px;
+  }
+
+  .note-detail-card {
+    padding: 20px;
+  }
+
+  .note-detail-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .note-detail-actions .upvote-btn,
+  .note-detail-actions .note-download-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
 }

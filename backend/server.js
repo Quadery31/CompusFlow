@@ -1,11 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import fs from 'fs';
 import connectDB from './config/db.js';
 import lostFoundRoutes from './routes/lostFoundRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
 import doubtRoutes from './routes/doubtRoutes.js';
 import complaintRoutes from './routes/complaintRoutes.js';
+import noteRoutes from './routes/noteRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -13,11 +15,17 @@ dotenv.config();
 // Connect to database
 connectDB();
 
+// Ensure uploads directory exists
+if (!fs.existsSync('uploads')) {
+  fs.mkdirSync('uploads');
+}
+
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
 // Basic root route
 app.get('/', (req, res) => {
@@ -34,6 +42,7 @@ app.use('/api/lost', lostFoundRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/doubts', doubtRoutes);
 app.use('/api/complaints', complaintRoutes);
+app.use('/api/notes', noteRoutes);
 
 const PORT = process.env.PORT || 5000;
 
