@@ -7,7 +7,11 @@ import lostFoundRoutes from './routes/lostFoundRoutes.js';
 import eventRoutes from './routes/eventRoutes.js';
 import doubtRoutes from './routes/doubtRoutes.js';
 import complaintRoutes from './routes/complaintRoutes.js';
+<<<<<<< Updated upstream
 import noteRoutes from './routes/noteRoutes.js';
+=======
+import authRoutes from './routes/authRoutes.js';
+>>>>>>> Stashed changes
 
 // Load environment variables
 dotenv.config();
@@ -43,6 +47,9 @@ app.use('/api/events', eventRoutes);
 app.use('/api/doubts', doubtRoutes);
 app.use('/api/complaints', complaintRoutes);
 app.use('/api/notes', noteRoutes);
+
+// FIXED: Mount the auth routes here so Express listens for /api/auth/google
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 

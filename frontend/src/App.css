@@ -33,7 +33,20 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto; /* Pushes everything to the right */
+  padding-right: 20px;
+}
 
+.logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ff4d4d;
+}
 * {
   margin: 0;
   padding: 0;
@@ -47,7 +60,23 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
+/* Ensure the entire screen is dark */
+body {
+  background-color: #0f1117 !important; /* Use your --bg-primary variable color */
+  min-height: 100vh;
+  margin: 0;
+}
 
+#root {
+  min-height: 100vh;
+  background-color: #0f1117;
+}
+
+.app {
+  background-color: #0f1117; /* Force the container to match the body */
+  min-height: 100vh;
+  width: 100%;
+}
 #root {
   min-height: 100vh;
 }
