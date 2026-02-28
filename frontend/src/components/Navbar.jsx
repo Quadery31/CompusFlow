@@ -27,6 +27,9 @@ export default function Navbar() {
       <NavLink to="/notes" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
         📚 Notes
       </NavLink>
+      <NavLink to="/classrooms" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+        🏫 Classrooms
+      </NavLink>
 
       {user ? (
         <button onClick={logout} className="nav-link logout-btn">

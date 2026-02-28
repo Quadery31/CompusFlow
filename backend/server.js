@@ -9,6 +9,7 @@ import doubtRoutes from './routes/doubtRoutes.js';
 import complaintRoutes from './routes/complaintRoutes.js';
 import noteRoutes from './routes/noteRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import classroomRoutes from './routes/classroomRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -44,6 +45,7 @@ app.use('/api/events', eventRoutes);
 app.use('/api/doubts', doubtRoutes);
 app.use('/api/complaints', complaintRoutes);
 app.use('/api/notes', noteRoutes);
+app.use('/api/classrooms', classroomRoutes);
 
 // FIXED: Mount the auth routes here so Express listens for /api/auth/google
 app.use('/api/auth', authRoutes);

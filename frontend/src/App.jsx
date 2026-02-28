@@ -11,6 +11,7 @@ import Complaints from './pages/Complaints';
 import ComplaintDetails from './pages/ComplaintDetails';
 import Notes from './pages/Notes';
 import NoteDetails from './pages/NoteDetails';
+import ClassroomAvailability from './pages/ClassroomAvailability';
 import Login from './pages/Login';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/complaints/:id" element={<ProtectedRoute><ComplaintDetails /></ProtectedRoute>} />
             <Route path="/notes" element={<ProtectedRoute><Notes /></ProtectedRoute>} />
             <Route path="/notes/:id" element={<ProtectedRoute><NoteDetails /></ProtectedRoute>} />
+            <Route path="/classrooms" element={<ProtectedRoute><ClassroomAvailability /></ProtectedRoute>} />
 
             <Route path="/login" element={<Login />} />
           </Routes>
